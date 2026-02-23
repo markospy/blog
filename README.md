@@ -64,8 +64,12 @@ You can connect any form by adding your Fabform endpoint URL.
 
 Learn more at: https://fabform.io
 
+## Deploy with Vercel
+
+You can deploy PaperAstro to Vercel with one click:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ffabformhub%2Fpaperastro.git)
+
 
 License
 MIT License
