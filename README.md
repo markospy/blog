@@ -27,55 +27,64 @@ Live Demo: https://paperastro.vercel.app/
 
 Use the official Astro CLI:
 
-```bash
-npm create astro@latest -- --template fabformhub/paperastro
+    npm create astro@latest -- --template fabformhub/paperastro
 
 Or clone the repository manually:
 
-git clone https://github.com/fabformhub/paperastro
-cd paperastro
-npm install
-npm run dev
+    git clone https://github.com/fabformhub/paperastro
+    cd paperastro
+    npm install
+    npm run dev
 
+---
 
-# Project Structure
+## Project Structure
 
-/
-├── public/
-├── src/
-│   ├── components/
-│   ├── layouts/
-│   ├── pages/
-│   ├── consts.ts
-│   └── styles/
-└── package.json
+    /
+    ├── public/
+    ├── src/
+    │   ├── components/
+    │   ├── layouts/
+    │   ├── pages/
+    │   ├── consts.ts
+    │   └── styles/
+    └── package.json
 
-#Commands
+---
 
-npm run dev       # Start the development server
-npm run build     # Build the site for production
-npm run preview   # Preview the production build
+## Commands
 
+    npm run dev       # Start the development server
+    npm run build     # Build the site for production
+    npm run preview   # Preview the production build
 
-#Form Handling with Fabform
+---
 
-PaperAstro includes ready‑to‑use form integration powered by the Fabform form backend.
+## Form Handling with Fabform
+
+PaperAstro includes ready‑to‑use form integration powered by the Fabform form backend.  
 You can connect any form by adding your Fabform endpoint URL.
 
 Learn more at: https://fabform.io
+
+---
 
 ## Deploy with Vercel
 
 You can deploy PaperAstro to Vercel with one click:
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/fabformhub/paperastro)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ffabformhub%2Fpaperastro.git)
+---
 
-License
-MIT License
+## License
+
+MIT License  
 © 2026 Geoffrey Callaghan
 
-Repository
-GitHub: https://github.com/fabformhub/paperastro
+---
 
+## Repository
+
+GitHub: https://github.com/fabformhub/paperastro
 
