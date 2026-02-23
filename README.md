@@ -68,8 +68,8 @@ Learn more at: https://fabform.io
 
 You can deploy PaperAstro to Vercel with one click:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ffabformhub%2Fpaperastro.git)
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ffabformhub%2Fpaperastro.git)
 
 License
 MIT License
