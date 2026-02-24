@@ -35,8 +35,8 @@ You can explore Git installation.
 
 ## Screenshot
 
-Image not displayed here.  
-You can explore screenshot usage.
+![PaperAstro Screenshot](public/screenshot.png)
+
 
 ---
 
