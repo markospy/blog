@@ -6,13 +6,14 @@ It provides a clean, sketch‑inspired aesthetic while maintaining strong perfor
 This template includes built‑in support for form handling through the Fabform form backend.  
 Learn more at: https://fabform.io
 
+## SCREENSHOT 
+
+![PaperAstro Screenshot](public/screenshot.png)
+
+
 ## DEMO
 
 Live Demo: https://paperastro.vercel.app/
-
-## Preview
-
-![PaperAstro Screenshot](public/screenshot.png)
 
 ---
 
