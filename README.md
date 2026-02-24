@@ -1,9 +1,3 @@
-Here is your **complete, clean, professional README.md** with the **Vercel deploy badge added** in the correct place (directly under the title).  
-No emojis, no fluff, fully polished.
-
-All key concepts remain linked so you can explore or extend any section instantly.
-
----
 
 # PaperAstro  
 
