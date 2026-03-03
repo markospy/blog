@@ -13,10 +13,23 @@
   }
 }
 
-/* Vista móvil: título más pequeño */
+/* Vista móvil: títulos y subtítulos más pequeños */
 @media (max-width: 767px) {
   main.container .article--responsive h1 {
     font-size: 1.35rem;
+  }
+  main.container .article--responsive h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  main.container .article--responsive h3 {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  main.container .article--responsive h4,
+  main.container .article--responsive h5,
+  main.container .article--responsive h6 {
+    font-size: 1rem;
   }
 }
 
