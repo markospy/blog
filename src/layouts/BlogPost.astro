@@ -8,7 +8,7 @@ import Header from '../components/Header.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags = [] } = Astro.props;
 ---
 
 <html lang="en">
@@ -19,50 +19,44 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
   <body>
     <Header />
 
-    <main class="container padding-large">
-      <article class="paper">
+    <main class="container container--responsive padding-large">
+      <article class="article--responsive flex flex-col justify-content">
 
-        <!-- Hero Image -->
-        <div class="hero-image margin-bottom-large">
-          {heroImage && (
-            <Image
-              width={1020}
-              height={510}
-              src={heroImage}
-              alt={title}
-              class="img-responsive paper"
-            />
-          )}
-        </div>
+        <h1 class="text-center margin-bottom-small">{title}</h1>
 
-        <!-- Title + Dates -->
-        <div class="text-center margin-bottom-large">
-          <h1 class="paper">{title}</h1>
+        {heroImage && (
+          <Image
+            width={1020}
+            height={510}
+            src={heroImage}
+            alt={title}
+            class="article-hero img-responsive margin-bottom-small"
+          />
+        )}
 
-          <p class="paper">
-            Published on <FormattedDate date={pubDate} />
-            {updatedDate && (
-              <>
-                <br />
-                <span class="italic">
-                  Last updated on <FormattedDate date={updatedDate} />
-                </span>
-              </>
-            )}
+        {tags.length > 0 && (
+          <p class="text-center margin-bottom-small flex flex-wrap justify-center gap-small">
+            {tags.map((tag) => (
+              <span class="tag-pill">{tag}</span>
+            ))}
           </p>
+        )}
 
-          <hr />
-        </div>
-
-        <!-- Blog Content -->
-        <div class="paper padding-large">
-          <slot />
-        </div>
-
-        <!-- Footer Note -->
-        <p class="text-center margin-top-large paper">
-          Thank you for reading. This article is part of the PaperAstro starter template.
+        <p class="text-center margin-bottom-large">
+          Published on <FormattedDate date={pubDate} />
+          {updatedDate && (
+            <>
+              <br />
+              <span class="italic">
+                Last updated on <FormattedDate date={updatedDate} />
+              </span>
+            </>
+          )}
         </p>
+
+        <hr />
+
+        <slot />
 
       </article>
     </main>

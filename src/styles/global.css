@@ -1,0 +1,55 @@
+/* Responsive layout */
+.container--responsive {
+  max-width: 100%;
+  box-sizing: border-box;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .container--responsive {
+    padding-left: var(--padding-large, 2rem);
+    padding-right: var(--padding-large, 2rem);
+  }
+}
+
+/* Vista móvil: título más pequeño */
+@media (max-width: 767px) {
+  main.container .article--responsive h1 {
+    font-size: 1.35rem;
+  }
+}
+
+.article--responsive {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.article-hero {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Ensure all images in main are responsive */
+main.container img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Blog tags */
+.tag-pill {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.85rem;
+  background: var(--primary, #41403e);
+  color: var(--primary-inverse, #fff);
+  border-radius: 4px;
+}
+
+.blog-tag.active {
+  font-weight: bold;
+  text-decoration: underline;
+}

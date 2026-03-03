@@ -98,6 +98,16 @@ Learn more at: [https://fabform.io](https://fabform.io)
 
 ---
 
+## Deploy en GitHub Pages
+
+Este proyecto está configurado para publicarse en **GitHub Pages** al hacer push a `main`: cada commit vuelve a construir el sitio estático (incluyendo los nuevos posts en Markdown).
+
+- **Guía completa**: [docs/GITHUB-PAGES.md](docs/GITHUB-PAGES.md) — personalización, dónde añadir entradas y flujo de despliegue automático.
+- En el repo de GitHub: **Settings → Pages → Source**: elige **GitHub Actions**.
+- Ajusta `site` y `base` en `astro.config.mjs` con tu usuario y nombre del repo.
+
+---
+
 ## Deploy with Vercel
 
 Deploy PaperAstro to Vercel with one click:
