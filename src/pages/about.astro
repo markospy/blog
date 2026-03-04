@@ -1,47 +1,56 @@
 ---
-import AboutHeroImage from '../assets/scrap-placeholder.png';
+import AboutHeroImage from '../assets/avatar-blog.png';
 import Layout from '../layouts/BlogPost.astro';
+
+const techStack = [
+  'FastAPI',
+  'React',
+  'React Native',
+  'Next.js',
+  'Expo',
+  'PostgreSQL',
+  'Python',
+  'SQLModel',
+  'SQLAlchemy',
+  'Pydantic',
+  'MongoDB',
+  'Docker',
+  'Git',
+  'Pytest',
+  'N8N',
+  'TypeScript',
+];
 ---
 
 <Layout
-  title="About PaperAstro"
-  description="Learn more about the purpose and philosophy behind the PaperAstro starter template."
-  pubDate={new Date('August 08 2021')}
+  title="Sobre mí"
+  description="Marcos Antonio Ávila Morales — Full Stack Developer. Perfil profesional y stack tecnológico."
   heroImage={AboutHeroImage}
+  showDate={false}
 >
-  <p class="paper">
-    PaperAstro is a lightweight Astro starter template designed for developers who want a clean,
-    sketch‑inspired aesthetic without sacrificing performance or simplicity. It combines the speed
-    and flexibility of Astro with the hand‑drawn visual style of PaperCSS, resulting in a unique
-    foundation for blogs, documentation sites, and small web projects.
+  <p>
+    Soy <strong>Marcos Antonio Ávila Morales</strong>, ingeniero de software Full Stack con más de tres años de experiencia
+    desarrollando aplicaciones en producción. Me especializo en backend con FastAPI, frontend con React e integraciones de modelos de inteligencia artifical. Me enfoco en soluciones robustas, escalables y alineadas con el negocio.
   </p>
 
-  <p class="paper">
-    This project was created to offer a minimal, approachable starting point for developers who
-    appreciate clarity and structure. PaperAstro avoids unnecessary complexity and focuses on
-    providing a solid, well‑organized base that can be extended in any direction.
+  <p>
+    He liderado el desarrollo de plataformas desde cero hasta MVP y su crecimiento (por ejemplo, más de 40 gimnasios
+    y miles de usuarios en un sistema de gestión), he trabajado con Clean Architecture y arquitectura por capas,
+    y me interesa el equilibrio entre calidad técnica y velocidad de entrega. También tengo experiencia en
+    proyectos freelance, integración con LLMs (RAGs, agentes) y productos SaaS.
   </p>
 
-  <p class="paper">
-    Key principles behind PaperAstro include:
+  <p>
+    Me gusta el enfoque pragmático: elegir la arquitectura adecuada al contexto, refactorizar con criterio
+    y mantener el foco en el impacto real del software.
   </p>
 
-  <ul class="paper">
-    <li>Clean, readable code that is easy to understand and modify</li>
-    <li>A minimal design system powered entirely by PaperCSS</li>
-    <li>Fast performance enabled by Astro’s modern architecture</li>
-    <li>Practical defaults for content‑driven websites</li>
-  </ul>
-
-  <p class="paper">
-    PaperAstro also includes built‑in support for form handling through Fabform, making it simple
-    to add contact forms or other user input without managing backend infrastructure.
-  </p>
-
-  <p class="paper">
-    Whether you're building a personal site, a small publication, or a documentation hub,
-    PaperAstro provides a reliable foundation that stays out of your way while giving your project
-    a distinctive visual character.
-  </p>
+  <section class="margin-top-large">
+    <h2 class="margin-bottom">Stack tecnológico</h2>
+    <div class="tech-stack">
+      {techStack.map((tech) => (
+        <div class="tech-item">{tech}</div>
+      ))}
+    </div>
+  </section>
 </Layout>
-

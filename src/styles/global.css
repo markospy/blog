@@ -52,6 +52,13 @@
   overflow-wrap: break-word;
 }
 
+/* Contenido del layout de artículo (BlogPost): ancho acotado para lectura cómoda */
+.article-layout-narrow {
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Centrar imagen hero (PaperCSS no centra imágenes block) */
 .article-hero {
   max-width: 100%;
@@ -59,6 +66,36 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Nombre en la presentación del hero (inline con el texto, sin bordes PaperCSS) */
+.hero-name-image {
+  display: inline-block;
+  vertical-align: middle;
+  height: 2.5em;
+  width: auto;
+  margin: 0 0.25rem;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Stack tecnológico (About): grid de nombres/iconos */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+}
+.tech-item {
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  background-color: var(--secondary, #e0e0e0);
+  color: var(--primary, #41403e);
+  font-size: 0.95rem;
+}
+html.dark .tech-item {
+  background-color: var(--primary-light-10);
+  color: var(--primary-inverse);
 }
 
 /* Estado activo del filtro por tag en /blog */

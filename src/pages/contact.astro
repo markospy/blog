@@ -14,16 +14,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
   <body>
     <Header />
 
-    <!-- 
-      ============================
-      FABFORM.IO INTEGRATION NOTES
-      ============================
-
-      Replace YOUR-ENDPOINT-ID-HERE with your Fabform endpoint.
-      Example: https://fabform.io/f/abc123
-
-      Do NOT remove name="" attributes — Fabform needs them.
-      Do NOT expose API keys — Fabform does not require any.
+    <!--
+      Formulario → webhook n8n → tu flujo envía a Telegram.
+      Configura PUBLIC_N8N_WEBHOOK_URL con la URL del webhook de tu flujo n8n
+      (en .env o en los secrets de GitHub Actions para el build).
     -->
 
     <main class="container container--responsive padding-large">
@@ -41,12 +35,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
         </h1>
 
         <p class="text-center">
-          Use the form below to send a message.  
-          This form is styled with PaperCSS and securely processed by Fabform.io.
-        </p>
 
-        <form 
-          action="https://fabform.io/f/YOUR-ENDPOINT-ID-HERE"
+
+        <form
+          action={import.meta.env.PUBLIC_N8N_WEBHOOK_URL ?? ''}
           method="POST"
           class="margin-top-large"
         >
@@ -90,11 +82,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
         </form>
 
-        <div class="text-center margin-top-large">
-          <a href="https://fabform.io" target="_blank" class="badge secondary">
-            Powered by Fabform.io
-          </a>
-        </div>
+        {!import.meta.env.PUBLIC_N8N_WEBHOOK_URL && (
+          <p class="text-center margin-top margin-left margin-right" style="color: var(--muted); font-size: 0.9rem;">
+            Configura <code>PUBLIC_N8N_WEBHOOK_URL</code> con la URL del webhook de n8n para activar el envío.
+          </p>
+        )}
 
       </div>
 

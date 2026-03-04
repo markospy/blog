@@ -8,6 +8,7 @@ import PostList from '../components/PostList.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 import Avatar from '../assets/avatar-blog.png';
+import NombreMarcos from '../assets/nombre-marcos.png';
 
 const allPosts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -36,7 +37,13 @@ const recentPosts = allPosts.slice(0, 3);
           />
           <div class="hero-intro margin-none">
             <p>
-              Hola, me llamo Marcos Antonio Avila Morales y soy fullstack...
+              Hola, me llamo
+              <img
+                src={NombreMarcos.src}
+                alt="Marcos Antonio Ávila Morales"
+                class="hero-name-image"
+              />
+              y soy fullstack...
             </p>
             <p>
               {SITE_DESCRIPTION}
