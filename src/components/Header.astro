@@ -3,24 +3,39 @@ import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 ---
 
-<header class="header-with-padding">
-  <div class="container">
-    <nav class="padding-small flex align-center space-between">
-
-      <!-- Navigation Links -->
-      <div class="flex gap-small">
-        <HeaderLink href="/" class="paper-btn btn-small">{SITE_TITLE}</HeaderLink>
-        <HeaderLink href="/blog" class="paper-btn btn-small">Blog</HeaderLink>
-        <HeaderLink href="/about" class="paper-btn btn-small">About me</HeaderLink>
+<header class="padding-top-small">
+  <div class="container container--responsive header-container">
+    <nav class="row padding-small margin-bottom-none header-nav">
+      <div class="header-nav-spacer"></div>
+      <div class="row flex-center margin-bottom-none">
+        <HeaderLink href="/" class="paper-btn btn-small margin-right-small">{SITE_TITLE}</HeaderLink>
+        <HeaderLink href="/blog" class="paper-btn btn-small margin-right-small">Blog</HeaderLink>
+        <HeaderLink href="/about" class="paper-btn btn-small margin-right-small">About me</HeaderLink>
         <HeaderLink href="/contact" class="paper-btn btn-small">Contact</HeaderLink>
       </div>
-
+      <div class="row flex-right margin-bottom-none">
+        <button type="button" class="paper-btn btn-small" id="dark-mode-toggle" aria-label="Alternar modo oscuro">
+          <span class="theme-icon-sun" aria-hidden="true"></span>
+          <span class="theme-icon-moon" aria-hidden="true"></span>
+        </button>
+      </div>
     </nav>
   </div>
 </header>
 
-<style>
-  .header-with-padding {
-    padding-top: 1rem;
-  }
-</style>
+<script is:inline>
+  (function() {
+    var html = document.documentElement;
+    var btn = document.getElementById('dark-mode-toggle');
+    if (!btn) return;
+    function updateLabel() {
+      btn.setAttribute('aria-label', html.classList.contains('dark') ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+    }
+    updateLabel();
+    btn.addEventListener('click', function() {
+      html.classList.toggle('dark');
+      try { localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light'); } catch (e) {}
+      updateLabel();
+    });
+  })();
+</script>

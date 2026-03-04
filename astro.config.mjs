@@ -9,6 +9,6 @@ import { defineConfig } from "astro/config";
 // Repo "blog" → https://markospy.github.io/blog/
 export default defineConfig({
   site: "https://markospy.github.io",
-  base: "/blog",
+  base: "/",
   integrations: [mdx(), sitemap()],
 });

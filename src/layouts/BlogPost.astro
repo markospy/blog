@@ -20,7 +20,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags = [] } = Astro
     <Header />
 
     <main class="container container--responsive padding-large">
-      <article class="article--responsive flex flex-col justify-content">
+      <article class="article--responsive">
 
         <h1 class="text-center margin-bottom-small">{title}</h1>
 
@@ -30,14 +30,14 @@ const { title, description, pubDate, updatedDate, heroImage, tags = [] } = Astro
             height={510}
             src={heroImage}
             alt={title}
-            class="article-hero img-responsive margin-bottom-small"
+            class="article-hero margin-bottom-small"
           />
         )}
 
         {tags.length > 0 && (
-          <p class="text-center margin-bottom-small flex flex-wrap justify-center gap-small">
+          <p class="row flex-center margin-bottom-small">
             {tags.map((tag) => (
-              <span class="tag-pill">{tag}</span>
+              <span class="badge primary margin-right-small margin-bottom-small">{tag}</span>
             ))}
           </p>
         )}
@@ -54,9 +54,11 @@ const { title, description, pubDate, updatedDate, heroImage, tags = [] } = Astro
           )}
         </p>
 
-        <hr />
 
         <slot />
+
+        <hr />
+
 
       </article>
     </main>

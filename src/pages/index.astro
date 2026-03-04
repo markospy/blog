@@ -1,12 +1,22 @@
 ---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import PostList from '../components/PostList.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+import Avatar from '../assets/avatar-blog.png';
+
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const recentPosts = allPosts.slice(0, 3);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
@@ -15,56 +25,32 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
     <main class="container container--responsive padding-large">
 
-      <h1 class="text-center paper">Welcome to PaperAstro</h1>
+      <div class="hero-narrow">
+        <section class="margin-bottom-large hero-section">
+          <Image
+            src={Avatar}
+            alt=""
+            width={200}
+            height={200}
+            class="article-hero hero-avatar"
+          />
+          <div class="hero-intro margin-none">
+            <p>
+              Hola, me llamo Marcos Antonio Avila Morales y soy fullstack...
+            </p>
+            <p>
+              {SITE_DESCRIPTION}
+            </p>
+          </div>
+        </section>
+      </div>
 
-      <p class="paper">
-        PaperAstro is a lightweight, professional starter template built with Astro and styled
-        entirely using PaperCSS. It provides a clean, sketch‑inspired aesthetic while maintaining
-        strong performance, clarity, and simplicity.
-      </p>
+      <h3>Últimos artículos</h3>
 
-      <p class="paper">
-        This template is designed for developers who want a minimal, well‑structured foundation
-        for blogs, documentation sites, or small content‑driven projects. PaperAstro keeps the
-        design approachable and distinctive without adding unnecessary complexity.
-      </p>
+      <PostList posts={recentPosts} singleRow />
 
-      <h2 class="paper">Features</h2>
-
-      <ul class="paper">
-        <li>Clean, minimal layout powered by Astro</li>
-        <li>Sketch‑style UI using PaperCSS</li>
-        <li>MDX support for rich content</li>
-        <li>RSS and Sitemap integrations included</li>
-        <li>Image optimization via Sharp</li>
-        <li>Built‑in form handling through Fabform.io</li>
-      </ul>
-
-      <h2 class="paper">Getting Started</h2>
-
-      <p class="paper">
-        To begin customizing this template, edit the files inside the <code>src</code> directory.
-        The structure is intentionally simple, making it easy to adapt the layout, add pages,
-        or integrate additional Astro features.
-      </p>
-
-      <ul class="paper">
-        <li>Modify this page at <code>src/pages/index.astro</code></li>
-        <li>Add new routes inside <code>src/pages/</code></li>
-        <li>Update global settings in <code>src/consts.ts</code></li>
-        <li>Extend layouts or components as needed</li>
-      </ul>
-
-      <h2 class="paper">Resources</h2>
-
-      <ul class="paper">
-        <li><a href="https://docs.astro.build/">Astro Documentation</a></li>
-        <li><a href="https://www.getpapercss.com/">PaperCSS Documentation</a></li>
-        <li><a href="https://fabform.io">Fabform.io</a> for form handling</li>
-      </ul>
-
-      <p class="paper text-center">
-        PaperAstro provides a focused, reliable starting point for your next project.
+      <p class="text-center margin-top-large">
+        <a href="/blog/" class="paper-btn btn-primary">Ver todos los artículos</a>
       </p>
 
     </main>
@@ -72,4 +58,3 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
     <Footer />
   </body>
 </html>
-

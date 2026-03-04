@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+---
+
+<div class="card card-post">
+  {post.data.heroImage && (
+    <a href={`/blog/${post.id}/`} class="no-decoration">
+      <Image
+        width={720}
+        height={360}
+        src={post.data.heroImage}
+        alt=""
+      />
+    </a>
+  )}
+  <div class="card-body">
+    <h4 class="card-title">
+      <a href={`/blog/${post.id}/`} class="no-decoration">{post.data.title}</a>
+    </h4>
+    <h5 class="card-subtitle text-right">
+      <FormattedDate date={post.data.pubDate} />
+    </h5>
+    {(post.data.tags ?? []).length > 0 && (
+      <p class="row margin-top-small margin-bottom-small margin-bottom-none">
+        {(post.data.tags ?? []).map((tag) => (
+          <span class="badge primary margin-right-small margin-bottom-small">{tag}</span>
+        ))}
+      </p>
+    )}
+  </div>
+</div>

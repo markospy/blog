@@ -1,10 +1,9 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
+import PostList from '../../components/PostList.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 const allPosts = (await getCollection('blog')).sort(
@@ -28,7 +27,7 @@ const tags = [...new Set(allPosts.flatMap((p) => p.data.tags ?? []))].sort();
         Bienvenido a mi blog. Aquí podrás encontrar todo tipo de artículos, desde técnicos (solo unos pocos) a temas más humanos, como mi experiencia de crecimiento en el camino de la programación.
       </p>
 
-      <nav class="margin-top-large text-center" aria-label="Filtrar por etiqueta">
+      <nav class="row flex-center margin-top-large margin-bottom-none" aria-label="Filtrar por etiqueta">
         <span class="margin-right-small">Filtrar:</span>
         <a href="/blog/" class="blog-tag paper-btn btn-small margin-right-small">Todos</a>
         {
@@ -44,43 +43,7 @@ const tags = [...new Set(allPosts.flatMap((p) => p.data.tags ?? []))].sort();
       </nav>
 
       <section class="margin-top-large">
-        <ul class="flex flex-wrap gap-large no-bullet justify-center" id="blog-list">
-          {
-            allPosts.map((post) => (
-              <li
-                class="paper blog-card"
-                style="width: 100%; max-width: 420px; padding: 20px;"
-                data-tags={(post.data.tags ?? []).map((t) => t.toLowerCase()).join(',')}
-              >
-                <a href={`/blog/${post.id}/`} class="no-decoration">
-                  {post.data.heroImage && (
-                    <Image
-                      width={720}
-                      height={360}
-                      src={post.data.heroImage}
-                      alt=""
-                      class="img-responsive margin-bottom-small"
-                    />
-                  )}
-
-                  <h4 class="margin-none">{post.data.title}</h4>
-
-                  {(post.data.tags ?? []).length > 0 && (
-                    <p class="margin-top-small margin-bottom-small flex flex-wrap gap-small">
-                      {(post.data.tags ?? []).map((tag) => (
-                        <span class="tag-pill">{tag}</span>
-                      ))}
-                    </p>
-                  )}
-
-                  <p class="italic margin-none text-right">
-                    <FormattedDate date={post.data.pubDate} />
-                  </p>
-                </a>
-              </li>
-            ))
-          }
-        </ul>
+        <PostList posts={allPosts} listId="blog-list" filterable />
       </section>
 
     </main>
@@ -89,13 +52,13 @@ const tags = [...new Set(allPosts.flatMap((p) => p.data.tags ?? []))].sort();
       function filterByTag() {
         const params = new URLSearchParams(window.location.search);
         const tag = params.get('tag')?.toLowerCase();
-        const cards = document.querySelectorAll('.blog-card');
+        const items = document.querySelectorAll('.blog-list-item');
         const tagLinks = document.querySelectorAll('.blog-tag');
         tagLinks.forEach((a) => {
           const hrefTag = new URL(a.getAttribute('href') ?? '', window.location.origin).searchParams.get('tag')?.toLowerCase();
           a.classList.toggle('active', !tag ? a.textContent?.trim() === 'Todos' : hrefTag === tag);
         });
-        cards.forEach((el) => {
+        items.forEach((el) => {
           const tags = (el.getAttribute('data-tags') ?? '').split(',').filter(Boolean);
           const show = !tag || tags.includes(tag);
           (el as HTMLElement).style.display = show ? '' : 'none';

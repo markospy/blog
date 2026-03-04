@@ -1,4 +1,9 @@
-/* Responsive layout */
+/*
+ * Solo estilos que PaperCSS no proporciona.
+ * Ver: https://www.getpapercss.com/docs/
+ */
+
+/* Contenedor responsivo (padding lateral según viewport) */
 .container--responsive {
   max-width: 100%;
   box-sizing: border-box;
@@ -6,14 +11,23 @@
   padding-right: 0.5rem;
 }
 
+/* Solo el hero de la portada con ancho acotado en desktop */
 @media (min-width: 768px) {
-  .container--responsive {
-    padding-left: var(--padding-large, 2rem);
-    padding-right: var(--padding-large, 2rem);
+  .hero-narrow {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
-/* Vista móvil: títulos y subtítulos más pequeños */
+@media (min-width: 768px) {
+  .container--responsive {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Vista móvil: títulos más pequeños (PaperCSS no tiene tipografía responsiva) */
 @media (max-width: 767px) {
   main.container .article--responsive h1 {
     font-size: 1.35rem;
@@ -38,6 +52,7 @@
   overflow-wrap: break-word;
 }
 
+/* Centrar imagen hero (PaperCSS no centra imágenes block) */
 .article-hero {
   max-width: 100%;
   height: auto;
@@ -46,23 +61,129 @@
   margin-right: auto;
 }
 
-/* Ensure all images in main are responsive */
-main.container img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Blog tags */
-.tag-pill {
-  display: inline-block;
-  padding: 0.15rem 0.5rem;
-  font-size: 0.85rem;
-  background: var(--primary, #41403e);
-  color: var(--primary-inverse, #fff);
-  border-radius: 4px;
-}
-
+/* Estado activo del filtro por tag en /blog */
 .blog-tag.active {
   font-weight: bold;
   text-decoration: underline;
+}
+
+/* Row sin margin-bottom cuando se usa como fila de badges/links */
+.row.margin-bottom-none {
+  margin-bottom: 0;
+}
+
+/* Lista del blog: sin guion en li, más espacio entre posts */
+.blog-list {
+  gap: 1.5rem;
+}
+.blog-list li:before {
+  content: none;
+}
+/* Una sola fila solo en pantallas anchas; antes las cards se apilan en columna */
+.blog-list--single-row {
+  flex-wrap: wrap;
+}
+@media (min-width: 992px) {
+  .blog-list--single-row {
+    flex-wrap: nowrap;
+  }
+}
+
+/* Enlaces sin subrayado (tarjetas de post) */
+a.no-decoration {
+  text-decoration: none;
+}
+
+/* Hero: columna en móvil, fila en desktop; avatar + texto con gap */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+}
+.hero-avatar {
+  margin-bottom: 1rem;
+}
+.hero-intro {
+  margin-top: 0;
+}
+@media (min-width: 768px) {
+  .hero-section {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+  .hero-section .hero-avatar {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+  .hero-section .hero-intro {
+    margin-left: 20px;
+    min-width: 0;
+  }
+}
+
+/* Iconos tema (sol / luna) */
+.theme-icon-sun {
+  display: none;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='SVGvG6RIdLi'%3E%3Cpath fill='%23fff' d='M12 6c3.31 0 6 2.69 6 6c0 3.31 -2.69 6 -6 6c-3.31 0 -6 -2.69 -6 -6c0 -3.31 2.69 -6 6 -6Z'%3E%3Canimate fill='freeze' attributeName='d' dur='0.4s' values='M12 2c5.52 0 10 4.48 10 10c0 5.52 -4.48 10 -10 10c-5.52 0 -10 -4.48 -10 -10c0 -5.52 4.48 -10 10 -10Z;M12 6c3.31 0 6 2.69 6 6c0 3.31 -2.69 6 -6 6c-3.31 0 -6 -2.69 -6 -6c0 -3.31 2.69 -6 6 -6Z'/%3E%3C/path%3E%3Cpath d='M22 -4c3.31 0 6 2.69 6 6c0 3.31 -2.69 6 -6 6c-3.31 0 -6 -2.69 -6 -6c0 -3.31 2.69 -6 6 -6Z'%3E%3Canimate fill='freeze' attributeName='d' dur='0.4s' values='M18 -4c5.52 0 10 4.48 10 10c0 5.52 -4.48 10 -10 10c-5.52 0 -10 -4.48 -10 -10c0 -5.52 4.48 -10 10 -10Z;M22 -4c3.31 0 6 2.69 6 6c0 3.31 -2.69 6 -6 6c-3.31 0 -6 -2.69 -6 -6c0 -3.31 2.69 -6 6 -6Z'/%3E%3Cset fill='freeze' attributeName='opacity' begin='0.4s' to='0'/%3E%3C/path%3E%3C/mask%3E%3C/defs%3E%3Cpath fill='%23efe314' d='M0 0h24v24H0z' mask='url(%23SVGvG6RIdLi)'/%3E%3Cg fill='none' stroke='%23efe314' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M12 21v1M21 12h1M12 3v-1M3 12h-1' opacity='0'%3E%3CanimateTransform attributeName='transform' dur='30s' repeatCount='indefinite' type='rotate' values='0 12 12;360 12 12'/%3E%3Cset fill='freeze' attributeName='opacity' begin='0.4s' to='1'/%3E%3Canimate fill='freeze' attributeName='d' begin='0.4s' dur='0.2s' values='M12 19v1M19 12h1M12 5v-1M5 12h-1;M12 21v1M21 12h1M12 3v-1M3 12h-1'/%3E%3C/path%3E%3Cpath d='M18.5 18.5l0.5 0.5M18.5 5.5l0.5 -0.5M5.5 5.5l-0.5 -0.5M5.5 18.5l-0.5 0.5' opacity='0'%3E%3CanimateTransform attributeName='transform' dur='30s' repeatCount='indefinite' type='rotate' values='0 12 12;360 12 12'/%3E%3Cset fill='freeze' attributeName='opacity' begin='0.6s' to='1'/%3E%3Canimate fill='freeze' attributeName='d' begin='0.6s' dur='0.2s' values='M17 17l0.5 0.5M17 7l0.5 -0.5M7 7l-0.5 -0.5M7 17l-0.5 0.5;M18.5 18.5l0.5 0.5M18.5 5.5l0.5 -0.5M5.5 5.5l-0.5 -0.5M5.5 18.5l-0.5 0.5'/%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+}
+html.dark .theme-icon-sun {
+  display: inline-block;
+}
+.theme-icon-moon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='SVGnw0mAdjE'%3E%3Cpath fill='%23fff' d='M12 2c5.52 0 10 4.48 10 10c0 5.52 -4.48 10 -10 10c-5.52 0 -10 -4.48 -10 -10c0 -5.52 4.48 -10 10 -10Z'%3E%3Canimate fill='freeze' attributeName='d' dur='0.4s' values='M12 6c3.31 0 6 2.69 6 6c0 3.31 -2.69 6 -6 6c-3.31 0 -6 -2.69 -6 -6c0 -3.31 2.69 -6 6 -6Z;M12 2c5.52 0 10 4.48 10 10c0 5.52 -4.48 10 -10 10c-5.52 0 -10 -4.48 -10 -10c0 -5.52 4.48 -10 10 -10Z'/%3E%3Cset fill='freeze' attributeName='opacity' begin='0.4s' to='0'/%3E%3C/path%3E%3Cpath d='M18 -4c5.52 0 10 4.48 10 10c0 5.52 -4.48 10 -10 10c-5.52 0 -10 -4.48 -10 -10c0 -5.52 4.48 -10 10 -10Z'%3E%3Canimate fill='freeze' attributeName='d' dur='0.4s' values='M22 -4c3.31 0 6 2.69 6 6c0 3.31 -2.69 6 -6 6c-3.31 0 -6 -2.69 -6 -6c0 -3.31 2.69 -6 6 -6Z'/%3E%3Cset fill='freeze' attributeName='opacity' begin='0.4s' to='0'/%3E%3C/path%3E%3C/mask%3E%3C/defs%3E%3Cpath fill='none' stroke='%2383827c' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 21v1M21 12h1M12 3v-1M3 12h-1M18.5 18.5l0.5 0.5M18.5 5.5l0.5 -0.5M5.5 5.5l-0.5 -0.5M5.5 18.5l-0.5 0.5'%3E%3Canimate fill='freeze' attributeName='opacity' dur='0.4s' values='1;0'/%3E%3C/path%3E%3Cg fill='%2383827c'%3E%3Cpath d='M0 0h24v24H0z' mask='url(%23SVGnw0mAdjE)'/%3E%3Cpath stroke='%2383827c' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M7 6c0 6.08 4.92 11 11 11c0.53 0 1.05 -0.04 1.56 -0.11c-1.61 2.47 -4.39 4.11 -7.56 4.11c-4.97 0 -9 -4.03 -9 -9c0 -3.17 1.64 -5.95 4.11 -7.56c-0.07 0.51 -0.11 1.03 -0.11 1.56Z' opacity='0'%3E%3Cset fill='freeze' attributeName='opacity' begin='0.4s' to='1'/%3E%3C/path%3E%3Cpath d='M15.22 6.03l2.53 -1.94l-3.19 -0.09l-1.06 -3l-1.06 3l-3.19 0.09l2.53 1.94l-0.91 3.06l2.63 -1.81l2.63 1.81l-0.91 -3.06Z' opacity='0'%3E%3Canimate fill='freeze' attributeName='opacity' begin='0.4s' dur='0.4s' to='1'/%3E%3C/path%3E%3Cpath d='M19.61 12.25l1.64 -1.25l-2.06 -0.05l-0.69 -1.95l-0.69 1.95l-2.06 0.05l1.64 1.25l-0.59 1.98l1.7 -1.17l1.7 1.17l-0.59 -1.98Z' opacity='0'%3E%3Canimate fill='freeze' attributeName='opacity' begin='0.8s' dur='0.4s' to='1'/%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+}
+html.dark .theme-icon-moon {
+  display: none;
+}
+
+/* Cards de posts: estilo PaperCSS card, ancho 20rem en desktop */
+.card-post {
+  width: 100%;
+  max-width: 20rem;
+}
+.blog-list-item {
+  list-style: none;
+}
+
+/* Header: menú centrado, botón tema a la derecha; ancho acotado en desktop */
+.header-nav {
+  display: flex;
+  align-items: center;
+}
+.header-nav-spacer {
+  flex: 1;
+}
+.header-nav .row.flex-right {
+  flex: 1;
+  justify-content: flex-end;
+}
+@media (min-width: 768px) {
+  header .header-container {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Modo oscuro: body usa los colores del tema dark de PaperCSS */
+html.dark body {
+  background-color: var(--main-background);
+  color: var(--primary);
+}
+
+/* Modo oscuro: badges/tags visibles (contraste sobre fondo oscuro) */
+html.dark .badge,
+html.dark .badge.primary {
+  background-color: var(--primary-light-10);
+  color: var(--primary-inverse);
+  border-color: var(--primary-light-10);
 }

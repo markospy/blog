@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostCard from './PostCard.astro';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+  /** Id del ul (p. ej. "blog-list" para el filtro por tags) */
+  listId?: string;
+  /** Si es true, cada li lleva data-tags para filtrar por etiqueta */
+  filterable?: boolean;
+  /** En desktop, mostrar todos los posts en una sola fila (sin wrap) */
+  singleRow?: boolean;
+}
+
+const { posts, listId, filterable = false, singleRow = false } = Astro.props;
+---
+
+<ul
+  class:list={[
+    'row flex-center margin-bottom-none blog-list',
+    { 'blog-list--single-row': singleRow },
+  ]}
+  id={listId}
+  aria-label={filterable ? 'Lista de artículos del blog' : undefined}
+>
+  {
+    posts.map((post) => (
+      <li
+        class="blog-list-item"
+        data-tags={filterable ? (post.data.tags ?? []).map((t) => t.toLowerCase()).join(',') : undefined}
+      >
+        <PostCard post={post} />
+      </li>
+    ))
+  }
+</ul>
