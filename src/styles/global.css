@@ -80,22 +80,38 @@
   box-shadow: none;
 }
 
-/* Stack tecnológico (About): grid de nombres/iconos */
+/* Stack tecnológico (About): iconos Skill Icons (variante light) + nombre; estilo papel (blanco + borde) */
 .tech-stack {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem 1rem;
 }
 .tech-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   padding: 0.35rem 0.75rem;
-  border-radius: 4px;
-  background-color: var(--secondary, #e0e0e0);
-  color: var(--primary, #41403e);
   font-size: 0.95rem;
+  background-color: var(--white, #fff);
+  color: var(--primary, #41403e);
+  border: 2px solid var(--primary, #41403e);
+  border-radius: 2px;
+  box-shadow: 2px 2px 0 var(--shadow-color-regular, rgba(0, 0, 0, 0.2));
+}
+.tech-item .tech-icon {
+  flex-shrink: 0;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  vertical-align: middle;
+}
+.tech-name {
+  white-space: nowrap;
 }
 html.dark .tech-item {
-  background-color: var(--primary-light-10);
-  color: var(--primary-inverse);
+  background-color: var(--main-background-light, #c1c0bd);
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 /* Estado activo del filtro por tag en /blog */

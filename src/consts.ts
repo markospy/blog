@@ -2,5 +2,5 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 export const SITE_TITLE = 'Home';
-export const SITE_DESCRIPTION = 'Cada proyecto, cada error, cada línea de código me ha enseñado algo nuevo. Aquí comparto mi camino como programador: aprendiz, experimentador y siempre en movimiento. Historias reales, lecciones sinceras y descubrimientos que van más allá de la teoría.';
+export const SITE_DESCRIPTION = 'Cada proyecto, cada error, cada línea de código me ha enseñado algo nuevo. Aquí comparto mi camino como programador, aprendiz, experimentador y emprendedor, siempre en movimiento. Historias reales, lecciones sinceras y descubrimientos que van más allá de la teoría.';
 

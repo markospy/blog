@@ -2,24 +2,29 @@
 import AboutHeroImage from '../assets/avatar-blog.png';
 import Layout from '../layouts/BlogPost.astro';
 
-const techStack = [
-  'FastAPI',
-  'React',
-  'React Native',
-  'Next.js',
-  'Expo',
-  'PostgreSQL',
-  'Python',
-  'SQLModel',
-  'SQLAlchemy',
-  'Pydantic',
-  'MongoDB',
-  'Docker',
-  'Git',
-  'Pytest',
-  'N8N',
-  'TypeScript',
+// Icones de https://icon-sets.iconify.design/skill-icons/ (Iconify – Skill Icons), variante light
+const techStack: { name: string; icon: string }[] = [
+  { name: 'FastAPI', icon: 'fastapi' },
+  { name: 'React', icon: 'react-light' },
+  { name: 'React Native', icon: 'react-light' },
+  { name: 'Next.js', icon: 'nextjs-light' },
+  { name: 'Expo', icon: 'react-light' },
+  { name: 'PostgreSQL', icon: 'postgresql-light' },
+  { name: 'HTML', icon: 'html' },
+  { name: 'CSS', icon: 'css' },
+  { name: 'JavaScript', icon: 'javascript' },
+  { name: 'TypeScript', icon: 'typescript' },
+  { name: 'Python', icon: 'python-light' },
+  { name: 'SQLModel', icon: 'python-light' },
+  { name: 'SQLAlchemy', icon: 'python-light' },
+  { name: 'Pydantic', icon: 'python-light' },
+  { name: 'MongoDB', icon: 'mongodb' },
+  { name: 'Docker', icon: 'docker' },
+  { name: 'Git', icon: 'git' },
+  { name: 'Pytest', icon: 'python-light' },
+  { name: 'N8N', icon: 'nodejs-light' },
 ];
+const iconifyBase = 'https://api.iconify.design/skill-icons';
 ---
 
 <Layout
@@ -48,8 +53,17 @@ const techStack = [
   <section class="margin-top-large">
     <h2 class="margin-bottom">Stack tecnológico</h2>
     <div class="tech-stack">
-      {techStack.map((tech) => (
-        <div class="tech-item">{tech}</div>
+      {techStack.map(({ name, icon }) => (
+        <div class="tech-item" title={name}>
+          <img
+            src={`${iconifyBase}/${icon}.svg`}
+            alt=""
+            width="28"
+            height="28"
+            class="tech-icon"
+          />
+          <span class="tech-name">{name}</span>
+        </div>
       ))}
     </div>
   </section>
