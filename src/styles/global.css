@@ -224,6 +224,18 @@ html.dark .theme-icon-moon {
   flex: 1;
   justify-content: flex-end;
 }
+
+/* Botón de tema (luz/oscuro): redondo */
+.btn-round {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (min-width: 768px) {
   header .header-container {
     max-width: 720px;

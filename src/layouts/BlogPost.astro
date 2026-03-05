@@ -9,6 +9,7 @@ import Header from '../components/Header.astro';
 type Props = CollectionEntry<'blog'>['data'] & { showDate?: boolean };
 
 const { title, description, pubDate, updatedDate, heroImage, tags = [], showDate = true } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <html lang="en">
@@ -35,9 +36,14 @@ const { title, description, pubDate, updatedDate, heroImage, tags = [], showDate
         )}
 
         {tags.length > 0 && (
-          <p class="row flex-center margin-bottom-small">
+          <p class="row flex-center">
             {tags.map((tag) => (
-              <span class="badge primary margin-right-small margin-bottom-small">{tag}</span>
+              <a
+                href={`${base}articles/?tag=${encodeURIComponent(tag)}`}
+                class="badge primary margin-right-small no-decoration"
+              >
+                {tag}
+              </a>
             ))}
           </p>
         )}
