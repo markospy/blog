@@ -1,0 +1,29 @@
+---
+---
+<button
+  type="button"
+  class="scroll-to-top"
+  id="scroll-to-top"
+  aria-label="Ir arriba"
+  title="Ir arriba"
+  hidden
+>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<script is:inline>
+  (function() {
+    var btn = document.getElementById('scroll-to-top');
+    if (!btn) return;
+    function toggle() {
+      btn.hidden = window.scrollY < 300;
+    }
+    toggle();
+    window.addEventListener('scroll', toggle, { passive: true });
+    btn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
+</script>

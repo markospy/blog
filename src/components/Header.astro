@@ -9,13 +9,20 @@ const base = import.meta.env.BASE_URL;
   <div class="container container--responsive header-container">
     <nav class="row padding-small margin-bottom-none header-nav">
       <div class="header-nav-spacer"></div>
-      <div class="row flex-center margin-bottom-none">
+      <div class="header-nav-links row flex-center margin-bottom-none">
         <HeaderLink href={base} class="paper-btn btn-small margin-right-small">{SITE_TITLE}</HeaderLink>
         <HeaderLink href={`${base}articles`} class="paper-btn btn-small margin-right-small">Blog</HeaderLink>
         <HeaderLink href={`${base}about`} class="paper-btn btn-small margin-right-small">About me</HeaderLink>
         <HeaderLink href={`${base}contact`} class="paper-btn btn-small">Contact</HeaderLink>
       </div>
-      <div class="row flex-right margin-bottom-none">
+      <div class="row flex-right margin-bottom-none header-actions">
+        <button type="button" class="paper-btn btn-small header-hamburger hamburger-no-border" id="header-hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="header-drawer">
+          <span class="hamburger-lines" aria-hidden="true">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </span>
+        </button>
         <button type="button" class="paper-btn btn-small btn-round" id="dark-mode-toggle" aria-label="Alternar modo oscuro">
           <span class="theme-icon-sun" aria-hidden="true"></span>
           <span class="theme-icon-moon" aria-hidden="true"></span>
@@ -23,21 +30,69 @@ const base = import.meta.env.BASE_URL;
       </div>
     </nav>
   </div>
+
+  <div class="header-drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+  <div class="header-drawer" id="header-drawer" aria-hidden="true" role="dialog" aria-label="Menú de navegación">
+    <button type="button" class="header-drawer-close" id="drawer-close" aria-label="Cerrar menú">×</button>
+    <nav class="header-drawer-nav">
+      <HeaderLink href={base} class="paper-btn btn-small margin-bottom-small drawer-link">{SITE_TITLE}</HeaderLink>
+      <HeaderLink href={`${base}articles`} class="paper-btn btn-small margin-bottom-small drawer-link">Blog</HeaderLink>
+      <HeaderLink href={`${base}about`} class="paper-btn btn-small margin-bottom-small drawer-link">About me</HeaderLink>
+      <HeaderLink href={`${base}contact`} class="paper-btn btn-small drawer-link">Contact</HeaderLink>
+    </nav>
+  </div>
 </header>
 
 <script is:inline>
   (function() {
     var html = document.documentElement;
-    var btn = document.getElementById('dark-mode-toggle');
-    if (!btn) return;
-    function updateLabel() {
-      btn.setAttribute('aria-label', html.classList.contains('dark') ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
-    }
-    updateLabel();
-    btn.addEventListener('click', function() {
-      html.classList.toggle('dark');
-      try { localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light'); } catch (e) {}
+    var themeBtn = document.getElementById('dark-mode-toggle');
+    if (themeBtn) {
+      function updateLabel() {
+        themeBtn.setAttribute('aria-label', html.classList.contains('dark') ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+      }
       updateLabel();
+      themeBtn.addEventListener('click', function() {
+        html.classList.toggle('dark');
+        try { localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light'); } catch (e) {}
+        updateLabel();
+      });
+    }
+
+    var hamburger = document.getElementById('header-hamburger');
+    var drawer = document.getElementById('header-drawer');
+    var overlay = document.getElementById('drawer-overlay');
+    var closeBtn = document.getElementById('drawer-close');
+
+    function openDrawer() {
+      if (!drawer || !overlay) return;
+      drawer.classList.add('is-open');
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      drawer.setAttribute('aria-hidden', 'false');
+      if (hamburger) hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      if (!drawer || !overlay) return;
+      drawer.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      drawer.setAttribute('aria-hidden', 'true');
+      if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    if (hamburger) hamburger.addEventListener('click', openDrawer);
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (drawer) {
+      drawer.querySelectorAll('.drawer-link').forEach(function(link) {
+        link.addEventListener('click', closeDrawer);
+      });
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && drawer && drawer.classList.contains('is-open')) closeDrawer();
     });
   })();
 </script>
