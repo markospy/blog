@@ -255,8 +255,21 @@ fieldset.form-group.margin-none.border-none {
   .header-actions > fieldset.form-group.margin-none.border-none > label.paper-switch-tile.theme-switch-label {
     align-items: center;
   }
+
+  label > div.paper-switch-tile {
+    margin-top: 1px;
+  }
+
   .header-actions > fieldset.form-group.margin-none.border-none > label.paper-switch-tile.theme-switch-label > .paper-switch-tile-card {
     margin-top: 0;
+  }
+
+  .theme-switch-label .paper-switch-tile-card-front {
+    margin-top: 10px;
+  }
+
+  .theme-switch-label .paper-switch-tile-card-back {
+    margin-top: -10px;
   }
 }
 
