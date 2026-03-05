@@ -234,15 +234,34 @@ fieldset.form-group.margin-none.border-none {
   height: 44px;
 }
 .header-actions > fieldset.form-group.margin-none.border-none > label.paper-switch-tile.theme-switch-label {
-  display: inline-flex;
-  align-items: flex-end;
+  display: flex;
+  align-items: center;
   justify-content: center;
   padding: 0;
   line-height: 1;
 }
+
+.header-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .header-actions > fieldset.form-group.margin-none.border-none > label.paper-switch-tile.theme-switch-label > .paper-switch-tile-card {
   margin-top: auto;
 }
+
+@media (max-width: 767px) {
+  .header-actions > fieldset.form-group.margin-none.border-none > label.paper-switch-tile.theme-switch-label {
+    align-items: center;
+  }
+  .header-actions > fieldset.form-group.margin-none.border-none > label.paper-switch-tile.theme-switch-label > .paper-switch-tile-card {
+    margin-top: 0;
+  }
+}
+
+
+
 .theme-switch-label .paper-switch-tile-card-front,
 .theme-switch-label .paper-switch-tile-card-back {
   display: flex;
