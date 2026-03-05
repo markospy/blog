@@ -1,5 +1,4 @@
 ---
-import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 
 const base = import.meta.env.BASE_URL;
@@ -10,7 +9,7 @@ const base = import.meta.env.BASE_URL;
     <nav class="row padding-small margin-bottom-none header-nav">
       <div class="header-nav-spacer"></div>
       <div class="header-nav-links row flex-center margin-bottom-none">
-        <HeaderLink href={base} class="paper-btn btn-small margin-right-small">{SITE_TITLE}</HeaderLink>
+        <HeaderLink href={base} class="paper-btn btn-small margin-right-small">Home</HeaderLink>
         <HeaderLink href={`${base}articles`} class="paper-btn btn-small margin-right-small">Blog</HeaderLink>
         <HeaderLink href={`${base}about`} class="paper-btn btn-small margin-right-small">About me</HeaderLink>
         <HeaderLink href={`${base}contact`} class="paper-btn btn-small">Contact</HeaderLink>
@@ -44,7 +43,7 @@ const base = import.meta.env.BASE_URL;
   <div class="header-drawer" id="header-drawer" aria-hidden="true" role="dialog" aria-label="Menú de navegación">
     <button type="button" class="header-drawer-close" id="drawer-close" aria-label="Cerrar menú">×</button>
     <nav class="header-drawer-nav">
-      <HeaderLink href={base} class="paper-btn btn-small margin-bottom-small drawer-link">{SITE_TITLE}</HeaderLink>
+      <HeaderLink href={base} class="paper-btn btn-small margin-bottom-small drawer-link">Home</HeaderLink>
       <HeaderLink href={`${base}articles`} class="paper-btn btn-small margin-bottom-small drawer-link">Blog</HeaderLink>
       <HeaderLink href={`${base}about`} class="paper-btn btn-small margin-bottom-small drawer-link">About me</HeaderLink>
       <HeaderLink href={`${base}contact`} class="paper-btn btn-small drawer-link">Contact</HeaderLink>
