@@ -224,6 +224,7 @@ html.dark .theme-icon-moon {
 .header-actions {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   flex: 1;
   justify-content: flex-end;
   align-items: center;
@@ -236,10 +237,7 @@ html.dark .theme-icon-moon {
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
-}
-.header-hamburger.hamburger-no-border {
-  border: none;
-  box-shadow: none;
+  flex-shrink: 0;
 }
 .hamburger-lines {
   display: flex;
