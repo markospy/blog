@@ -17,7 +17,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = FallbackImage } = Astro.props;
 // URL absoluta de la imagen para og:image / twitter:image (WhatsApp, Telegram, etc.)
-const imagePath = (base.endsWith('/') ? base.slice(0, -1) : base) + (image.src.startsWith('/') ? image.src : `/${image.src}`);
+const basePath = base.endsWith('/') ? base.slice(0, -1) : base;
+const imagePath = image.src.startsWith(basePath) ? image.src : basePath + (image.src.startsWith('/') ? image.src : `/${image.src}`);
 const imageUrl = new URL(imagePath, Astro.site).href;
 ---
 
