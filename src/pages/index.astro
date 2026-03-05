@@ -52,12 +52,12 @@ const recentPosts = allPosts.slice(0, 3);
         </section>
       </div>
 
-      <h3>Últimos artículos</h3>
+      <h3 class="text-center">Últimos artículos</h3>
 
       <PostList posts={recentPosts} singleRow />
 
       <p class="text-center margin-top-large">
-        <a href="/articles/" class="paper-btn btn-primary">Ver todos los artículos</a>
+        <a href={`${import.meta.env.BASE_URL}articles/`} class="paper-btn btn-primary">Ver todos los artículos</a>
       </p>
 
     </main>
