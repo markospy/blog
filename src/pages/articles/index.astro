@@ -29,11 +29,11 @@ const tags = [...new Set(allPosts.flatMap((p) => p.data.tags ?? []))].sort();
 
       <nav class="row flex-center margin-top-large margin-bottom-none" aria-label="Filtrar por etiqueta">
         <span class="margin-right-small">Filtrar:</span>
-        <a href="/blog/" class="blog-tag paper-btn btn-small margin-right-small">Todos</a>
+        <a href="/articles/" class="blog-tag paper-btn btn-small margin-right-small">Todos</a>
         {
           tags.map((tag) => (
             <a
-              href={`/blog/?tag=${encodeURIComponent(tag)}`}
+              href={`/articles/?tag=${encodeURIComponent(tag)}`}
               class="blog-tag paper-btn btn-small margin-right-small"
             >
               {tag}
@@ -71,4 +71,3 @@ const tags = [...new Set(allPosts.flatMap((p) => p.data.tags ?? []))].sort();
     <Footer />
   </body>
 </html>
-

@@ -114,7 +114,7 @@ html.dark .tech-item {
   border-color: var(--primary);
 }
 
-/* Estado activo del filtro por tag en /blog */
+/* Estado activo del filtro por tag en /articles */
 .blog-tag.active {
   font-weight: bold;
   text-decoration: underline;
