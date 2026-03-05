@@ -59,6 +59,11 @@
   margin-right: auto;
 }
 
+/* Título del artículo (BlogPost): mitad del tamaño por defecto del h1 */
+.article-title {
+  font-size: 1rem;
+}
+
 /* Centrar imagen hero (PaperCSS no centra imágenes block) */
 .article-hero {
   max-width: 100%;

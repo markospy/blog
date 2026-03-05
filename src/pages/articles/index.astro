@@ -23,10 +23,6 @@ const tags = [...new Set(allPosts.flatMap((p) => p.data.tags ?? []))].sort();
 
     <main class="container container--responsive padding-large">
 
-      <p class="text-center">
-        Bienvenido a mi blog. Aquí podrás encontrar todo tipo de artículos, desde técnicos (solo unos pocos) a temas más humanos, como mi experiencia de crecimiento en el camino de la programación.
-      </p>
-
       <nav class="row flex-center margin-top-large margin-bottom-none" aria-label="Filtrar por etiqueta">
         <span class="margin-right-small">Filtrar:</span>
         <a href={`${import.meta.env.BASE_URL}articles/`} class="blog-tag paper-btn btn-small margin-right-small">Todos</a>

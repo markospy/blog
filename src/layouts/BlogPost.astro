@@ -22,12 +22,12 @@ const { title, description, pubDate, updatedDate, heroImage, tags = [], showDate
     <main class="container container--responsive padding-large article-layout-narrow">
       <article class="article--responsive">
 
-        <h1 class="text-center margin-bottom-small">{title}</h1>
+        <h1 class="article-title text-center margin-bottom-small">{title}</h1>
 
         {heroImage && (
           <Image
-            width={300}
-            height={150}
+            width={600}
+            height={300}
             src={heroImage}
             alt={title}
             class="article-hero margin-bottom-small"
