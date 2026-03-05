@@ -1,0 +1,21 @@
+# Blog de Marcos Antonio Ávila Morales
+
+> Blog personal de un desarrollador Full Stack. Artículos sobre programación, experiencia con IA, aprendizaje y reflexiones del día a día como desarrollador. Contenido en español.
+
+Sitio estático generado con Astro, desplegado en GitHub Pages.
+
+## Contenido principal
+
+- [Inicio](https://markospy.github.io/blog/): Portada con presentación y últimos artículos
+- [Artículos](https://markospy.github.io/blog/articles/): Listado de todas las entradas del blog con filtro por etiquetas
+- [Sobre mí](https://markospy.github.io/blog/about): Perfil profesional, stack tecnológico y enfoque de trabajo
+- [Contacto](https://markospy.github.io/blog/contact): Formulario de contacto (mensajes vía n8n a Telegram)
+
+## Feed y mapa del sitio
+
+- [RSS](https://markospy.github.io/blog/rss.xml): Feed RSS del blog
+- [Sitemap](https://markospy.github.io/blog/sitemap-index.xml): Índice del sitemap para buscadores
+
+## Opcional
+
+- [Repositorio del sitio](https://github.com/markospy/blog): Código fuente del blog en GitHub
