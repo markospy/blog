@@ -92,7 +92,7 @@ El listado del blog ordena por **fecha de publicación** (más recientes primero
 
 ### Imágenes en las entradas
 
-- Puedes poner imágenes en **`src/assets/`** y referenciarlas en `heroImage` (por ejemplo `../../assets/mi-foto.png`).
+- Puedes poner imágenes en **`src/assets/`** y referenciarlas en `heroImage` (por ejemplo `../../assets/mi-foto.jpg`).
 - También puedes usar imágenes en el propio Markdown del cuerpo del post.
 
 ---

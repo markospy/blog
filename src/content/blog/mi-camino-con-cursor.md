@@ -2,7 +2,7 @@
 title: "Mi camino con Cursor: de la fe ciega a una relación madura con la IA"
 description: "Evolución usando Cursor desde julio: del éxtasis inicial al uso crítico de la IA, fines de semana (casi) libres de IA y el camino hacia Senior."
 pubDate: "2026-03-03"
-heroImage: "../../assets/image_0.png"
+heroImage: "../../assets/image_0.jpg"
 tags: ["IA", "aprendizaje"]
 ---
 
